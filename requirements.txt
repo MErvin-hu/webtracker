@@ -1,6 +1,5 @@
 Flask
 gunicorn
-sqlite3
 requests
 user_agents
 datetime
