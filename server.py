@@ -85,6 +85,17 @@ def track_visitor():
 
     return jsonify({"status": "ok", "message": "Visitor tracked"}), 200
 
+
+@app.route('/get_visitors', methods=['GET'])
+def get_visitors():
+    conn = sqlite3.connect("visitors.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM visitors")
+    data = cursor.fetchall()
+    conn.close()
+    
+    return jsonify(data)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
 
